@@ -1,4 +1,4 @@
-anubis
+Anubis
 ======
 
-Command Line application framework for Elixir
+** TODO: Add description **
