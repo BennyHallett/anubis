@@ -1,6 +1,8 @@
 Anubis
 ======
 
+[![Package](http://img.shields.io/hexpm/v/obelisk.svg)](https://hex.pm/packages/anubis)
+
 Anubis is a library for creating command line applications in Elixir.
 
 ## Features
