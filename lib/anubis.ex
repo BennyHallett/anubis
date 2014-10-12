@@ -37,7 +37,6 @@ defmodule Anubis do
 
   defmacro __using__(_opts) do
     quote do
-      import Mix.Task
       import unquote(__MODULE__)
 
       @commands []

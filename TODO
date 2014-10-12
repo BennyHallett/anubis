@@ -1,4 +1,3 @@
 * simple parsing of switches, etc
-* banner
 * Should only need to include Anubis and specify the commands
 * Simple .rc file

@@ -28,6 +28,7 @@ Your help can include a banner, describing the application and it's use. Use the
 ## An example
 
     defmodule Mix.Tasks.Example
+      use Mix.Task
       use Anubis
 
       banner """
