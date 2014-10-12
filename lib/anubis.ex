@@ -1,5 +1,11 @@
 defmodule Anubis do
 
+  defmacro banner(banner) do
+    quote do
+      @banner unquote(banner)
+    end
+  end
+
   defmacro command(name, description \\ "", f) do
     quote do
       @commands @commands ++ [{ unquote(to_string name), unquote(description) }]
@@ -17,6 +23,8 @@ defmodule Anubis do
       end
 
       def help do
+        IO.puts "#{@banner}\n"
+
         IO.puts "Valid commands are:\n"
 
         @commands
