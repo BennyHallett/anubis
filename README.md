@@ -23,10 +23,19 @@ Once you've defined your commands, Anubis will automatically generate a help com
 
     $ mix example help
 
+Your help can include a banner, describing the application and it's use. Use the `banner` macro (as in the example below) to set it up.
+
 ## An example
 
     defmodule Mix.Tasks.Example
       use Anubis
+
+      banner """
+      This is the example task.
+
+      Use it like:
+          $ mix example <command> <args>
+      """
 
       command :init, "Initialize the project.", Named.Function.init
       command :send, "Send me a small letter.", Named.Function.send
@@ -34,5 +43,3 @@ Once you've defined your commands, Anubis will automatically generate a help com
 
       parse
     end
-
-
