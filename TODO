@@ -1,3 +1,2 @@
-* simple parsing of switches, etc
-* Should only need to include Anubis and specify the commands
 * Simple .rc file
+* Need to fail or warn if unknown switches are passed

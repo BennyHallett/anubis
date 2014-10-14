@@ -9,15 +9,22 @@ defmodule Anubis do
   defmacro command(name, description \\ "", f) do
     quote do
       @commands @commands ++ [{ unquote(to_string name), unquote(description) }]
-      def _command([unquote(to_string name)|args]), do: args |> unquote(f)
+      def _command([unquote(to_string name)|args], opts), do: {args, opts} |> unquote(f)
+    end
+  end
+
+  defmacro option(name, type \\ :string, description \\ "") do
+    quote do
+      @options Dict.put(@options, unquote(name), { unquote(type), unquote(description) })
+      @opt_dict Dict.put(@opt_dict, unquote(name), unquote(type))
     end
   end
 
   defmacro parse do
     quote do
-      def _command(["help"|_]), do: help
+      def _command(["help"|_], _), do: help
 
-      def _command(_) do
+      def _command(_, _) do
         IO.puts "Command unknown."
         help
       end
@@ -25,12 +32,25 @@ defmodule Anubis do
       def help do
         IO.puts "#{@banner}\n"
 
-        IO.puts "Valid commands are:\n"
+        IO.puts "OPTIONS:\n"
 
-        @commands
-        |> Enum.map(&("#{elem(&1, 0)} - #{elem(&1, 1)}"))
+        @options
+        |> Dict.keys
+        |> Enum.map(&("  --#{to_string &1} [#{Dict.get(@options, &1) |> elem(0) |> to_string}] - #{Dict.get(@options, &1) |> elem(1) |> to_string}"))
         |> Enum.join("\n")
         |> IO.puts
+
+        IO.puts "\nCOMMANDS:\n"
+
+        @commands
+        |> Enum.map(&("  #{elem(&1, 0)} - #{elem(&1, 1)}"))
+        |> Enum.join("\n")
+        |> IO.puts
+      end
+
+      def run(args) do
+        opts = OptionParser.parse(args, strict: @opt_dict)
+        _command(elem(opts, 1), elem(opts, 0))
       end
     end
   end
@@ -39,13 +59,10 @@ defmodule Anubis do
     quote do
       import unquote(__MODULE__)
 
+      @banner   ""
       @commands []
-
-      def run(args) do
-        OptionParser.parse(args)
-        |> elem(1)
-        |> _command
-      end
+      @options  []
+      @opt_dict []
     end
   end
 
