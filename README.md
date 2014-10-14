@@ -17,9 +17,24 @@ As you can see in the example, just call the `command` macro, passing in an atom
 
 then the `Named.Function.init` function will be invoked with the arguments `["some", "params"]`.
 
+### Simple option definition
+
+Like most command line applications, yours may need to be configurable. This may include things like which credentials to use when connecting to another resource, or which file to load from disk.
+
+Anubis makes defining which switches are valid and what their types are quite simple, as you can see in the example file below. Valid types include:
+
+* :string
+* :integer
+* :boolean
+* :float
+
+*Be warned*: Anubis uses strict parsing, so any options that are passed in that haven't been defined will be ignored, and potentially have their value consumed as an argument.
+
+Next release will include warnings when this occurs.
+
 ### Help out of the box
 
-Once you've defined your commands, Anubis will automatically generate a help command for you, which lists out the available commands and their descriptions.
+Once you've defined your commands, Anubis will automatically generate a help command for you, which lists out the available commands and their descriptions, along with what switches are available.
 
     $ mix example help
 
@@ -37,6 +52,9 @@ Your help can include a banner, describing the application and it's use. Use the
       Use it like:
           $ mix example <command> <args>
       """
+
+      option :file,  :string,   "The file to be loaded."
+      option :procs: :integer,  "The number of concurrent processes to run" 
 
       command :init, "Initialize the project.", Named.Function.init
       command :send, "Send me a small letter.", Named.Function.send
