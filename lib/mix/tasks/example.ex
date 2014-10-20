@@ -19,6 +19,11 @@ defmodule Mix.Tasks.Example do
 
   banner "This is the banner"
 
+#  rc_file %{
+#    username: "user",
+#    password: "pass"
+#  }
+
   option :op, :integer, "This option does x"
   option :ha, :string, "Another"
 
