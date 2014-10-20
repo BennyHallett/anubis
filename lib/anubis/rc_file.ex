@@ -25,8 +25,8 @@ defmodule Anubis.RcFile do
     |> _path
   end
   
-  defp _filename(["elixir", "mix", "tasks"|filename]), do: ".#{filename |> Enum.join}.rc"
-  defp _filename(["elixir" | list]), do: ".#{list |> Enum.join}.rc"
+  defp _filename(["elixir", "mix", "tasks"|filename]), do: ".#{filename |> Enum.join("_")}.rc"
+  defp _filename(["elixir" | list]), do: ".#{list |> Enum.join("_")}.rc"
 
   defp _path(filename), do: Path.join("~", filename) |> Path.expand
 
