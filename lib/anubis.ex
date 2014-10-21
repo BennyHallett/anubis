@@ -20,6 +20,11 @@ defmodule Anubis do
     end
   end
 
+  defmacro rc_file(dict) do
+    quote do
+    end
+  end
+
   defmacro parse do
     quote do
       def _command(["help"|_], _), do: help
