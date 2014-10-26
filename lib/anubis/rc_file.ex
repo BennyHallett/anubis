@@ -1,6 +1,6 @@
 defmodule Anubis.RcFile do
 
-  def exist?(module), do: filename(module) |> File.exists?
+  def exist?(module), do: module |> filename |> File.exists?
 
   def touch(dict, module) do
     dict
@@ -10,7 +10,7 @@ defmodule Anubis.RcFile do
     |> _write(module)
   end
 
-  defp _write(content, module), do: File.write(filename(module), content)
+  defp _write(content, module), do: module |> filename |> File.write(content)
 
   def load do
     nil

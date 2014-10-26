@@ -26,7 +26,6 @@ defmodule TestHelperTask do
   command :try, "Try to run this", ExampleModule.go
 
   parse
-
 end
 
 defmodule TestHelper do

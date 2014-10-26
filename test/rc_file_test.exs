@@ -8,7 +8,7 @@ defmodule RcFileTest do
 
   test "that rc file is created when it doesn't exist" do
     assert !File.exists?(TestHelper.path)
-    TestHelperTask.run(["try"])
+    TestHelperTask.run(["initrc"])
     assert File.exists?(TestHelper.path)
   end
 end

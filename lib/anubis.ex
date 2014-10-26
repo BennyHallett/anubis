@@ -22,6 +22,12 @@ defmodule Anubis do
 
   defmacro rc_file(dict) do
     quote do
+      def init_rc, do: _init_rc(unquote(dict), Anubis.RcFile.exist?(__MODULE__))
+
+      def _init_rc(_, true), do: nil
+      def _init_rc(d, _), do: Anubis.RcFile.touch(d, __MODULE__)
+
+      def _command(["initrc"|_], _), do: init_rc
     end
   end
 
