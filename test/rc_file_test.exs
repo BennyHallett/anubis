@@ -11,4 +11,12 @@ defmodule RcFileTest do
     TestHelperTask.run(["initrc"])
     assert File.exists?(TestHelper.path)
   end
+
+  test "that rc file contains expected values" do
+    TestHelperTask.run(["initrc"])
+
+    content = File.read! TestHelper.path
+    assert String.contains?(content, "a: A")
+    assert String.contains?(content, "b: false")
+  end
 end
