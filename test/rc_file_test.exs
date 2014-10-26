@@ -18,5 +18,17 @@ defmodule RcFileTest do
     content = File.read! TestHelper.path
     assert String.contains?(content, "a: A")
     assert String.contains?(content, "b: false")
+    assert String.contains?(content, "c: 1")
+    assert String.contains?(content, "d: 2.3")
+  end
+
+  test "rc file is loaded back with the correct types" do
+    TestHelperTask.run(["initrc"])
+
+    loaded = Anubis.RcFile.load(TestHelperTask)
+    "A" =  loaded.a
+    false = loaded.b
+    1 = loaded.c
+    2.3 = loaded.d
   end
 end

@@ -18,7 +18,9 @@ defmodule TestHelperTask do
 
   rc_file %{
     a: "A",
-    b: false
+    b: false,
+    c: 1,
+    d: 2.3
   }
 
   option :a, :boolean, "This is an option"
