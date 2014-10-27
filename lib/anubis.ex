@@ -9,7 +9,10 @@ defmodule Anubis do
   defmacro command(name, description \\ "", f) do
     quote do
       @commands @commands ++ [{ unquote(to_string name), unquote(description) }]
-      def _command([unquote(to_string name)|args], opts), do: {args, opts} |> unquote(f)
+      def _command([unquote(to_string name)|args], opts) do
+        rc = Anubis.RcFile.load(__MODULE__)
+        {args, opts, rc} |> unquote(f)
+      end
     end
   end
 

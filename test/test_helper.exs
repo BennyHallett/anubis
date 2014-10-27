@@ -2,8 +2,12 @@ ExUnit.start()
 
 defmodule ExampleModule do
 
-  def go({_args, _opts}) do
+  def go({_args, _opts, _rc}) do
     true
+  end
+
+  def print({_args, _opts, rc}) do
+    rc
   end
 
 end
@@ -26,6 +30,7 @@ defmodule TestHelperTask do
   option :a, :boolean, "This is an option"
 
   command :try, "Try to run this", ExampleModule.go
+  command :print, "Print these", ExampleModule.print
 
   parse
 end

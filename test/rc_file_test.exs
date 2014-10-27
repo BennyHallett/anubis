@@ -31,4 +31,14 @@ defmodule RcFileTest do
     1 = loaded.c
     2.3 = loaded.d
   end
+
+  test "rc file is passed into function" do
+    TestHelperTask.run(["initrc"])
+    rc = TestHelperTask.run(["print"])
+
+    "A" =  rc.a
+    false = rc.b
+    1 = rc.c
+    2.3 = rc.d
+  end
 end
