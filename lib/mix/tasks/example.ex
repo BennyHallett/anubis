@@ -1,5 +1,5 @@
 defmodule La do
-  def la({args, options}) do
+  def la({args, options, rc}) do
     IO.puts "ARGS"
     args
     |> Enum.join(", ")
@@ -10,6 +10,13 @@ defmodule La do
     |> Enum.map(&("#{elem &1, 0} - #{elem &1, 1}"))
     |> Enum.join(", ")
     |> IO.puts
+
+    IO.puts "RC"
+    rc
+    |> Dict.keys
+    |> Enum.map(&("#{to_string &1}: #{to_string Dict.get(rc, &1)}"))
+    |> Enum.join("\n")
+    |> IO.puts
   end
 end
 
@@ -19,10 +26,10 @@ defmodule Mix.Tasks.Example do
 
   banner "This is the banner"
 
-#  rc_file %{
-#    username: "user",
-#    password: "pass"
-#  }
+  rc_file %{
+    username: "user",
+    password: "pass"
+  }
 
   option :op, :integer, "This option does x"
   option :ha, :string, "Another"

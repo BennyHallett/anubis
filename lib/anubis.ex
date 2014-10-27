@@ -25,6 +25,8 @@ defmodule Anubis do
 
   defmacro rc_file(dict) do
     quote do
+      @commands @commands ++ [{ "initrc", "Initialize the runtime configuration file." }]
+
       def init_rc, do: _init_rc(unquote(dict), Anubis.RcFile.exist?(__MODULE__))
 
       def _init_rc(_, true), do: nil
@@ -36,6 +38,8 @@ defmodule Anubis do
 
   defmacro parse do
     quote do
+      @commands @commands ++ [{ "help", "View this help information." }]
+
       def _command(["help"|_], _), do: help
 
       def _command(_, _) do
