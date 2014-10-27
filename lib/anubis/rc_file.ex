@@ -14,7 +14,7 @@ defmodule Anubis.RcFile do
 
   def load(module), do: _load(exist?(module), module)
 
-  defp _load(false, _), do: nil
+  defp _load(false, _), do: %{}
   defp _load(_, module) do
     module
     |> filename
