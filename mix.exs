@@ -4,7 +4,7 @@ defmodule Anubis.Mixfile do
   def project do
     [app: :anubis,
      version: "0.3.0",
-     elixir: "~> 1.0.0",
+     elixir: "~> 1.3.1",
      package: package,
      docs: [readme: true, main: "README.md"],
      description: """
