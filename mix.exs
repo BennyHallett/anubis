@@ -1,16 +1,18 @@
 defmodule Anubis.Mixfile do
   use Mix.Project
 
+  @version "0.3.1"
+
   def project do
     [app: :anubis,
-     version: "0.3.0",
-     elixir: "~> 1.3.1",
-     package: package,
+     version: @version,
+     elixir: "~> 1.5",
+     package: package(),
      docs: [readme: true, main: "README.md"],
      description: """
       Anubis is a framework for building command line applications.
      """,
-     deps: deps]
+     deps: deps()]
   end
 
   def application do
@@ -24,8 +26,8 @@ defmodule Anubis.Mixfile do
   defp package do
     %{
       licenses: ["MIT"],
-      contributors: ["Benny Hallett"],
-      links: %{ "Github" => "https://github.com/bennyhallett/anubis" }
+      contributors: ["Benny Hallett", "Bernat Jufré"],
+      links: %{ "Github" => "https://github.com/bennyhallet/anubis" }
     }
   end
 end

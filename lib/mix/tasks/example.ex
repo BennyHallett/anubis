@@ -13,8 +13,8 @@ defmodule La do
 
     IO.puts "RC"
     rc
-    |> Dict.keys
-    |> Enum.map(&("#{to_string &1}: #{to_string Dict.get(rc, &1)}"))
+    |> Map.keys
+    |> Enum.map(&("#{to_string &1}: #{to_string Map.get(rc, &1)}"))
     |> Enum.join("\n")
     |> IO.puts
   end
@@ -36,5 +36,5 @@ defmodule Mix.Tasks.Example do
 
   command :test, "Something", La.la
 
-  parse
+  parse()
 end
