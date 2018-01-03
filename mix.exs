@@ -20,7 +20,11 @@ defmodule Anubis.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      # Docs
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false},
+      {:earmark, ">= 1.2.3", only: :dev, runtime: false},
+    ]
   end
 
   defp package do
