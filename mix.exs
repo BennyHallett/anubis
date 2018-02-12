@@ -31,7 +31,7 @@ defmodule Anubis.Mixfile do
     %{
       licenses: ["MIT"],
       contributors: ["Benny Hallett", "Bernat Jufré"],
-      links: %{ "Github" => "https://github.com/bennyhallet/anubis" }
+      links: %{ "Github" => "https://github.com/bennyhallett/anubis" }
     }
   end
 end

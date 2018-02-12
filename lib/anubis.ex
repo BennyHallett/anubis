@@ -30,7 +30,7 @@ defmodule Anubis do
   """
 
   @doc """
-  Sets the banner as the description for the cli application.
+  Sets the banner as the description for the CLI application.
   """
   @spec banner(banner :: String.t) :: no_return
   defmacro banner(banner) do
@@ -101,10 +101,10 @@ defmodule Anubis do
 
   @doc """
   Prepares every command as a function so it can be pattern
-  match later on when parsing the command line arguments.
+  matched later on when parsing the command line arguments.
 
   It also declares the `help` command based on the options and commands
-  previously decalared.
+  previously declared.
   """
   @spec parse() :: no_return
   defmacro parse do

@@ -1,7 +1,7 @@
 defmodule Anubis.RcFile do
   @moduledoc """
   Module that handles everything that has to do with the
-  "runtime configuration" file and it's contents.
+  "runtime configuration" file and its contents.
   """
 
   def exist?(module), do: module |> filename |> File.exists?
