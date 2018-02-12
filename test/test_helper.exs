@@ -32,7 +32,7 @@ defmodule TestHelperTask do
   command :try, "Try to run this", ExampleModule.go
   command :print, "Print these", ExampleModule.print
 
-  parse
+  parse()
 end
 
 defmodule TestHelper do
@@ -40,7 +40,7 @@ defmodule TestHelper do
   def path, do: "~" |> Path.join(".testhelpertask.rc") |> Path.expand
 
   def cleanup do
-    path
+    path()
     |> File.rm
   end
 
